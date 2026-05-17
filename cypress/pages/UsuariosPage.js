@@ -36,12 +36,12 @@ class UsuarioPage {
         cy.get('table').contains(nome).should('exist');
     }
 
-    cadastrarUsuario(nome, email, senha) {
-    this.acessarCadastro();
-    this.preencherNome(nome);
-    this.preencherEmail(email);
-    this.preencherSenha(senha);
-    this.clicarSubmit();
-  }
+    cadastrarUsuario({ nome, email, senha }) {
+        this.acessarCadastro();
+        this.preencherNome(nome);
+        this.preencherEmail(email);
+        this.preencherSenha(senha);
+        this.clicarSubmit();
+    }
 }
 export default new UsuarioPage();

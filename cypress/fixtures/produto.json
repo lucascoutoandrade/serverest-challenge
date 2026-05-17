@@ -1,0 +1,10 @@
+{
+  "preco": {
+    "min": 1,
+    "max": 9999
+  },
+  "quantidade": {
+    "min": 1,
+    "max": 100
+  }
+}

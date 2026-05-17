@@ -1,18 +1,15 @@
-import { faker } from '@faker-js/faker';
 import produtosPage from '../../pages/ProdutosPage';
 
 describe('Produtos', () => {
     beforeEach(() => {
         cy.login();
+        cy.buildProduto().as('produto');
     });
 
-    it('Cadastrar Produto', () => {
-        const nome = faker.commerce.productName();
-        const preco = faker.number.int({ min: 1, max: 9999 });
-        const descricao = faker.commerce.productDescription();
-        const quantidade = faker.number.int({ min: 1, max: 100 });
+    it('Cadastrar Produto', function () {
+        const { nome, preco, descricao, quantidade } = this.produto;
 
-        produtosPage.cadastrarProduto(nome, preco, descricao, quantidade);
+        produtosPage.cadastrarProduto({ nome, preco, descricao, quantidade });
         produtosPage.validarPageListaDosProdutos();
         produtosPage.validarProdutoCriado(nome);
     });

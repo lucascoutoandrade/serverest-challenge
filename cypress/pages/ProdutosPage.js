@@ -40,7 +40,7 @@ class ProdutosPage {
         cy.get('table').contains(nome).should('exist');
     }
 
-    cadastrarProduto(nome, preco, descricao, quantidade) {
+    cadastrarProduto({ nome, preco, descricao, quantidade }) {
         this.acessarCadastro();
         this.preencherNome(nome);
         this.preencherPreco(preco);

@@ -1,20 +1,16 @@
-import { faker } from '@faker-js/faker';
-import usuariosPage from '../../pages/UsuariosPage'
-
-const nome = faker.person.fullName();
-const email = faker.internet.email();
+import usuariosPage from '../../pages/UsuariosPage';
 
 describe('Usuarios', () => {
     beforeEach(() => {
         cy.login();
+        cy.buildUsuario().as('usuario');
     });
 
-    it('Cadastrar Usuário', () => {
+    it('Cadastrar Usuário', function () {
+        const { nome, email, senha } = this.usuario;
 
-        usuariosPage.cadastrarUsuario(nome, email, 'teste');
+        usuariosPage.cadastrarUsuario({ nome, email, senha });
         usuariosPage.validarPageListaDosUsuarios();
         usuariosPage.validarUsuarioCriado(nome);
-
-    })
-
-})
+    });
+});

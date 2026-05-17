@@ -55,8 +55,11 @@ cypress/
 │   ├── usuarios/       # Cadastro e listagem de usuários
 │   └── produtos/       # Cadastro e listagem de produtos
 ├── pages/              # Page Objects
-├── support/            # Comandos customizados (cy.login)
-└── fixtures/
+├── fixtures/           # Dados estáticos (login, senha, ranges)
+│   ├── login.json
+│   ├── usuario.json
+│   └── produto.json
+└── support/            # Comandos (cy.login, cy.buildUsuario, cy.buildProduto)
 cypress.config.js
 package.json
 ```

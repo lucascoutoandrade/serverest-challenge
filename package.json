@@ -7,9 +7,7 @@
   },
   "scripts": {
     "test": "cypress run",
-    "test:open": "cypress open",
-    "cypress:run": "cypress run",
-    "cypress:open": "cypress open"
+    "test:open": "cypress open"
   },
   "devDependencies": {
     "@faker-js/faker": "^9.8.0",
