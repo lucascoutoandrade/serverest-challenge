@@ -4,7 +4,7 @@ import { buildProdutoFromFixture, buildUsuarioFromFixture } from './api/dataBuil
 import { loginApi } from './api/requests';
 
 Cypress.Commands.add('login', () => {
-  cy.fixture('login').then((login) => {
+  cy.fixture('frontend/login').then((login) => {
     cy.session('admin', () => {
       loginPage.acessarLogin();
       loginPage.preencherEmail(login.email);
@@ -18,7 +18,7 @@ Cypress.Commands.add('login', () => {
 });
 
 Cypress.Commands.add('buildUsuario', () => {
-  return cy.fixture('usuario').then((base) => ({
+  return cy.fixture('frontend/usuario').then((base) => ({
     nome: faker.person.fullName(),
     email: faker.internet.email(),
     senha: base.senha,
@@ -26,7 +26,7 @@ Cypress.Commands.add('buildUsuario', () => {
 });
 
 Cypress.Commands.add('buildProduto', () => {
-  return cy.fixture('produto').then((base) => ({
+  return cy.fixture('frontend/produto').then((base) => ({
     nome: faker.commerce.productName(),
     preco: faker.number.int(base.preco),
     descricao: faker.commerce.productDescription(),

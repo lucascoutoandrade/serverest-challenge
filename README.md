@@ -22,7 +22,7 @@ npm test
 | `npm test` | Todos os testes (frontend + API) em headless |
 | `npm run test:open` | Cypress Test Runner (modo interativo) |
 | `npx cypress run --spec "cypress/e2e/api/**/*.cy.js"` | Somente testes de API |
-| `npx cypress run --spec "cypress/e2e/auth/**/*.cy.js,cypress/e2e/usuarios/**/*.cy.js,cypress/e2e/produtos/**/*.cy.js"` | Somente frontend |
+| `npx cypress run --spec "cypress/e2e/frontend/**/*.cy.js"` | Somente frontend |
 
 ## Cenários de teste
 
@@ -30,32 +30,39 @@ npm test
 
 | # | Cenário | Spec |
 |---|---------|------|
-| 1 | Login válido | `cypress/e2e/auth/login.cy.js` |
-| 2 | Cadastro de usuário e validação na lista | `cypress/e2e/usuarios/cadastrarUsuario.cy.js` |
-| 3 | Cadastro de produto e validação na lista | `cypress/e2e/produtos/cadastrarProduto.cy.js` |
+| 1 | Login válido | `cypress/e2e/frontend/login.cy.js` |
+| 2 | Cadastro de usuário e validação na lista | `cypress/e2e/frontend/usuarios.cy.js` |
+| 3 | Cadastro de produto e validação na lista | `cypress/e2e/frontend/produtos.cy.js` |
 
 ### API (3)
 
 | # | Cenário | Spec |
 |---|---------|------|
-| 1 | POST `/usuarios` — status 201 | `cypress/e2e/api/criarUsuario.cy.js` |
-| 2 | GET `/usuarios` — usuário criado na lista | `cypress/e2e/api/listarUsuarios.cy.js` |
-| 3 | POST `/produtos` + GET `/produtos` — produto na lista | `cypress/e2e/api/produtos.cy.js` |
+| 1 | POST `/usuarios` — status 201 | `cypress/e2e/api/usuarios.api.cy.js` |
+| 2 | GET `/usuarios` — usuário criado na lista | `cypress/e2e/api/usuarios.api.cy.js` |
+| 3 | POST `/produtos` + GET `/produtos` — produto na lista | `cypress/e2e/api/produtos.api.cy.js` |
 
 ## Estrutura do projeto
 
 ```
 cypress/
 ├── e2e/
-│   ├── api/                 # Testes de API
-│   ├── auth/                # Login (frontend)
-│   ├── usuarios/            # Usuários (frontend)
-│   └── produtos/            # Produtos (frontend)
+│   ├── frontend/
+│   │   ├── login.cy.js
+│   │   ├── usuarios.cy.js
+│   │   └── produtos.cy.js
+│   └── api/
+│       ├── usuarios.api.cy.js
+│       └── produtos.api.cy.js
 ├── fixtures/
-│   ├── api/                 # Dados para API
-│   ├── login.json           # Credenciais frontend
-│   ├── usuario.json
-│   └── produto.json
+│   ├── frontend/
+│   │   ├── login.json
+│   │   ├── usuario.json
+│   │   └── produto.json
+│   └── api/
+│       ├── login.json
+│       ├── usuario.json
+│       └── produto.json
 ├── pages/                   # Page Objects (frontend)
 └── support/
     ├── api/
@@ -66,7 +73,8 @@ cypress/
 
 ## Credenciais
 
-- **Frontend/API:** `fulano@qa.com` / `teste` (fixtures `login.json` e `api/login.json`)
+- **Frontend:** `fulano@qa.com` / `teste` (`fixtures/frontend/login.json`)
+- **API:** `fulano@qa.com` / `teste` (`fixtures/api/login.json`)
 
 ## URLs
 
