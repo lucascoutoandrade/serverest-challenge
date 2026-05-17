@@ -21,7 +21,11 @@ class UsuarioPage {
         cy.get(`input[name='password']`).type(senha);
     }
     clicarSubmit() {
-        cy.get(`button[type='submit'`).click();
+        cy.get('button[type="submit"]').click();
+    }
+
+    acessarLista() {
+        cy.get('a[data-testid="listar-usuarios"]').click();
     }
 
     validarPageListaDosUsuarios() {

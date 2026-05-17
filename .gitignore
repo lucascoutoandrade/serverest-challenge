@@ -1,0 +1,73 @@
+# Dependências
+node_modules/
+
+# Logs npm / Node
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Cypress — artefatos gerados na execução
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+cypress/reports/
+
+# Arquivos temporários de debug/inspeção
+cypress/field-names.json
+cypress/h1-after-cadastro.txt
+
+# Variáveis de ambiente e credenciais
+.env
+.env.*
+!.env.example
+
+# Cache e build
+.cache/
+dist/
+build/
+coverage/
+.nyc_output/
+
+# Relatórios de teste (Mochawesome, etc.)
+mochawesome-report/
+results/
+test-results/
+playwright-report/
+
+# Sistema operacional — Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Sistema operacional — macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Sistema operacional — Linux
+*~
+
+# IDEs e editores
+.idea/
+*.iml
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/tasks.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Cursor
+.cursor/
+
+# Cypress binary cache (instalado globalmente pelo CLI)
+# Descomente se não quiser versionar referências locais:
+# .cypress/

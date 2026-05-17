@@ -1,0 +1,18 @@
+{
+  "name": "serverest-cypress",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "test": "cypress run",
+    "test:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
+    "cypress": "^14.4.0"
+  }
+}
