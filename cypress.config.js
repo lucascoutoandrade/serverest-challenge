@@ -1,9 +1,12 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   allowCypressEnv: false,
 
   e2e: {
-     baseUrl: 'https://front.serverest.dev',
+    baseUrl: 'https://front.serverest.dev',
+    env: {
+      apiUrl: 'https://serverest.dev',
+    },
   },
 });

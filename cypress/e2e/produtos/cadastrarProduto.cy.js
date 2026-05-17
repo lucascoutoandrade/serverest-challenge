@@ -1,12 +1,12 @@
 import produtosPage from '../../pages/ProdutosPage';
 
-describe('Produtos', () => {
+describe('Frontend - Produtos', () => {
     beforeEach(() => {
         cy.login();
         cy.buildProduto().as('produto');
     });
 
-    it('Cadastrar Produto', function () {
+    it('Deve cadastrar produto e validar na lista', function () {
         const { nome, preco, descricao, quantidade } = this.produto;
 
         produtosPage.cadastrarProduto({ nome, preco, descricao, quantidade });

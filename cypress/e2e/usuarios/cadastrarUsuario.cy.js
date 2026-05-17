@@ -1,12 +1,12 @@
 import usuariosPage from '../../pages/UsuariosPage';
 
-describe('Usuarios', () => {
+describe('Frontend - Usuários', () => {
     beforeEach(() => {
         cy.login();
         cy.buildUsuario().as('usuario');
     });
 
-    it('Cadastrar Usuário', function () {
+    it('Deve cadastrar usuário e validar na lista', function () {
         const { nome, email, senha } = this.usuario;
 
         usuariosPage.cadastrarUsuario({ nome, email, senha });

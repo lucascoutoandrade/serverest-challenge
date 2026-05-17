@@ -1,71 +1,74 @@
-# ServeRest — Automação E2E com Cypress
+# ServeRest — Automação E2E (Frontend + API)
 
-Testes end-to-end do [ServeRest](https://front.serverest.dev) com Cypress, Page Objects e Faker.
+Testes automatizados do [ServeRest](https://front.serverest.dev) com Cypress, cobrindo **frontend** e **API** ([Swagger](https://serverest.dev/)).
 
 ## Pré-requisitos
 
 - [Node.js](https://nodejs.org/) **18 ou superior**
-- [npm](https://www.npmjs.com/) (incluído com o Node.js)
-- Conexão com a internet (os testes acessam `https://front.serverest.dev`)
+- [npm](https://www.npmjs.com/)
+- Conexão com a internet
 
 ## Como executar
 
 ```bash
-# 1. Clonar o repositório
-git clone <url-do-repositorio>
-cd serveRest-project
-
-# 2. Instalar dependências
+git clone https://github.com/lucascoutoandrade/serverest-challenge.git
+cd serverest-challenge
 npm install
-
-# 3. Rodar todos os testes (headless)
 npm test
 ```
 
-### Outros comandos
-
 | Comando | Descrição |
 |---------|-----------|
-| `npm test` | Executa todos os testes em modo headless |
-| `npm run test:open` | Abre o Cypress Test Runner (modo interativo) |
-| `npx cypress run` | Equivalente ao `npm test` |
-| `npx cypress run --spec "cypress/e2e/auth/login.cy.js"` | Executa um spec específico |
+| `npm test` | Todos os testes (frontend + API) em headless |
+| `npm run test:open` | Cypress Test Runner (modo interativo) |
+| `npx cypress run --spec "cypress/e2e/api/**/*.cy.js"` | Somente testes de API |
+| `npx cypress run --spec "cypress/e2e/auth/**/*.cy.js,cypress/e2e/usuarios/**/*.cy.js,cypress/e2e/produtos/**/*.cy.js"` | Somente frontend |
 
-## Credenciais de teste
+## Cenários de teste
 
-O login usa o usuário padrão do ServeRest (definido em `cypress/support/commands.js`):
+### Frontend (3)
 
-- **E-mail:** `fulano@qa.com`
-- **Senha:** `teste`
+| # | Cenário | Spec |
+|---|---------|------|
+| 1 | Login válido | `cypress/e2e/auth/login.cy.js` |
+| 2 | Cadastro de usuário e validação na lista | `cypress/e2e/usuarios/cadastrarUsuario.cy.js` |
+| 3 | Cadastro de produto e validação na lista | `cypress/e2e/produtos/cadastrarProduto.cy.js` |
 
-## Cenários cobertos
+### API (3)
 
-1. Login válido
-2. Cadastrar usuário (dados dinâmicos com Faker)
-3. Listar usuário (validação na tabela)
-4. Cadastrar produto (dados dinâmicos com Faker)
-5. Listar produto (validação na tabela)
+| # | Cenário | Spec |
+|---|---------|------|
+| 1 | POST `/usuarios` — status 201 | `cypress/e2e/api/criarUsuario.cy.js` |
+| 2 | GET `/usuarios` — usuário criado na lista | `cypress/e2e/api/listarUsuarios.cy.js` |
+| 3 | POST `/produtos` + GET `/produtos` — produto na lista | `cypress/e2e/api/produtos.cy.js` |
 
 ## Estrutura do projeto
 
 ```
 cypress/
 ├── e2e/
-│   ├── auth/           # Login
-│   ├── usuarios/       # Cadastro e listagem de usuários
-│   └── produtos/       # Cadastro e listagem de produtos
-├── pages/              # Page Objects
-├── fixtures/           # Dados estáticos (login, senha, ranges)
-│   ├── login.json
+│   ├── api/                 # Testes de API
+│   ├── auth/                # Login (frontend)
+│   ├── usuarios/            # Usuários (frontend)
+│   └── produtos/            # Produtos (frontend)
+├── fixtures/
+│   ├── api/                 # Dados para API
+│   ├── login.json           # Credenciais frontend
 │   ├── usuario.json
 │   └── produto.json
-└── support/            # Comandos (cy.login, cy.buildUsuario, cy.buildProduto)
-cypress.config.js
-package.json
+├── pages/                   # Page Objects (frontend)
+└── support/
+    ├── api/
+    │   ├── requests.js      # Requisições HTTP
+    │   └── dataBuilder.js   # Geração de dados (Faker)
+    └── commands.js          # cy.login, cy.buildUsuario, etc.
 ```
 
-## Solução de problemas
+## Credenciais
 
-- **`npm install` falha:** verifique se o Node.js está na versão 18+ (`node -v`).
-- **Cypress não encontrado:** execute `npm install` novamente na raiz do projeto.
-- **Testes falham por timeout:** confirme acesso a `https://front.serverest.dev` e à API `https://serverest.dev`.
+- **Frontend/API:** `fulano@qa.com` / `teste` (fixtures `login.json` e `api/login.json`)
+
+## URLs
+
+- Frontend: https://front.serverest.dev
+- API: https://serverest.dev

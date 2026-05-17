@@ -1,5 +1,7 @@
 import { faker } from '@faker-js/faker';
 import loginPage from '../pages/LoginPage';
+import { buildProdutoFromFixture, buildUsuarioFromFixture } from './api/dataBuilder';
+import { loginApi } from './api/requests';
 
 Cypress.Commands.add('login', () => {
   cy.fixture('login').then((login) => {
@@ -30,4 +32,18 @@ Cypress.Commands.add('buildProduto', () => {
     descricao: faker.commerce.productDescription(),
     quantidade: faker.number.int(base.quantidade),
   }));
+});
+
+Cypress.Commands.add('buildUsuarioApi', () => {
+  return cy.fixture('api/usuario').then((base) => buildUsuarioFromFixture(base));
+});
+
+Cypress.Commands.add('buildProdutoApi', () => {
+  return cy.fixture('api/produto').then((base) => buildProdutoFromFixture(base));
+});
+
+Cypress.Commands.add('apiLogin', () => {
+  return cy.fixture('api/login').then((credentials) =>
+    loginApi(credentials).then((response) => response.body.authorization),
+  );
 });
