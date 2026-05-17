@@ -8,5 +8,9 @@ module.exports = defineConfig({
     env: {
       apiUrl: 'https://serverest.dev',
     },
+    setupNodeEvents(on, config) {
+      require('@cypress/grep/src/plugin')(config);
+      return config;
+    },
   },
 });

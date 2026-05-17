@@ -6,10 +6,14 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "test": "cypress run",
+    "test": "npm run test:all",
+    "test:all": "node scripts/cypress-run.js",
+    "test:frontend": "node scripts/cypress-run.js --spec \"cypress/e2e/frontend/**/*.cy.js\"",
+    "test:api": "node scripts/cypress-run.js --spec \"cypress/e2e/api/**/*.cy.js\"",
     "test:open": "cypress open"
   },
   "devDependencies": {
+    "@cypress/grep": "^4.1.0",
     "@faker-js/faker": "^9.8.0",
     "cypress": "^14.4.0"
   }

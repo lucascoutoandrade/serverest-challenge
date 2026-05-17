@@ -6,7 +6,7 @@ describe('Frontend - Usuários', () => {
     cy.buildUsuario().as('usuario');
   });
 
-  it('Deve cadastrar usuário e validar na lista', function () {
+  it('@usuarios - deve cadastrar usuário e validar na lista', function () {
     const { nome, email, senha } = this.usuario;
 
     usuariosPage.cadastrarUsuario({ nome, email, senha });

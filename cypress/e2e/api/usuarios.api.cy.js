@@ -1,7 +1,7 @@
 import { criarUsuario, listarUsuarios } from '../../support/api/requests';
 
 describe('API - Usuários', () => {
-  it('Deve criar usuário via POST /usuarios e retornar status 201', () => {
+  it('@usuarios - deve criar usuário via POST /usuarios e retornar status 201', () => {
     cy.buildUsuarioApi().then((usuario) => {
       criarUsuario(usuario).then((response) => {
         expect(response.status).to.eq(201);
@@ -11,7 +11,7 @@ describe('API - Usuários', () => {
     });
   });
 
-  it('Deve listar usuários via GET /usuarios e conter o usuário criado', () => {
+  it('@usuarios - deve listar usuários via GET /usuarios e conter o usuário criado', () => {
     cy.buildUsuarioApi().then((usuario) => {
       criarUsuario(usuario).its('status').should('eq', 201);
 

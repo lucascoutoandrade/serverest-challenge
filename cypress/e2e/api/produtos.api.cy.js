@@ -1,7 +1,7 @@
 import { criarProduto, listarProdutos } from '../../support/api/requests';
 
 describe('API - Produtos', () => {
-  it('Deve criar produto via POST /produtos e exibir no GET /produtos', () => {
+  it('@produtos - deve criar produto via POST /produtos e exibir no GET /produtos', () => {
     cy.apiLogin().then((token) => {
       cy.buildProdutoApi().then((produto) => {
         criarProduto(produto, token).then((response) => {

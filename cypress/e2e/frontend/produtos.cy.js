@@ -6,7 +6,7 @@ describe('Frontend - Produtos', () => {
     cy.buildProduto().as('produto');
   });
 
-  it('Deve cadastrar produto e validar na lista', function () {
+  it('@produtos - deve cadastrar produto e validar na lista', function () {
     const { nome, preco, descricao, quantidade } = this.produto;
 
     produtosPage.cadastrarProduto({ nome, preco, descricao, quantidade });
